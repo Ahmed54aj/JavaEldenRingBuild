@@ -47,16 +47,52 @@ public class CharacterWindow extends JFrame {
             // Create a new panel for each character
             JPanel cardPanel = new JPanel();
             cardPanel.setLayout(new BorderLayout());
+            cardPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2)); // Optional border for each card
 
-            // Add character details to the panel
-            JLabel characterLabel = new JLabel("Name: " + character.getName() + " | Level: " + character.getLevel());
-            cardPanel.add(characterLabel, BorderLayout.CENTER);
+            // Create a panel for the character's info
+            JPanel infoPanel = new JPanel();
+            infoPanel.setLayout(new GridLayout(0, 2)); // Two columns for labels and values
 
-            // Create a close button
+            // Add character details to the info panel
+            infoPanel.add(new JLabel("Name:"));
+            infoPanel.add(new JLabel(character.getName()));
+            infoPanel.add(new JLabel("Level:"));
+            infoPanel.add(new JLabel(String.valueOf(character.getLevel())));
+            infoPanel.add(new JLabel("Strength:"));
+            infoPanel.add(new JLabel(String.valueOf(character.getStrength())));
+            infoPanel.add(new JLabel("Dexterity:"));
+            infoPanel.add(new JLabel(String.valueOf(character.getDexterity())));
+            infoPanel.add(new JLabel("Intelligence:"));
+            infoPanel.add(new JLabel(String.valueOf(character.getIntelligence())));
+            infoPanel.add(new JLabel("Faith:"));
+            infoPanel.add(new JLabel(String.valueOf(character.getFaith())));
+            infoPanel.add(new JLabel("Arcane:"));
+            infoPanel.add(new JLabel(String.valueOf(character.getArcane())));
+            infoPanel.add(new JLabel("Weapon:"));
+            infoPanel.add(new JLabel(character.getWeapon()));
+            infoPanel.add(new JLabel("Armor:"));
+            infoPanel.add(new JLabel(character.getArmor()));
+            infoPanel.add(new JLabel("Shield:"));
+            infoPanel.add(new JLabel(character.getShield()));
+            infoPanel.add(new JLabel("Talisman:"));
+            infoPanel.add(new JLabel(character.getTalisman()));
+
+            // Add the info panel to the card panel
+            cardPanel.add(infoPanel, BorderLayout.CENTER);
+
+            // Create a small close button
+            JPanel closePanel = new JPanel();
+            closePanel.setLayout(new FlowLayout(FlowLayout.RIGHT)); // Right-align the button
             JButton closeButton = new JButton("X");
-            closeButton.setBackground(Color.RED);
-            closeButton.setForeground(Color.WHITE);
-            cardPanel.add(closeButton, BorderLayout.EAST); // Add close button to the right side
+            closeButton.setFont(new Font("Arial", Font.BOLD, 20)); // Increase font size for better visibility
+            closeButton.setPreferredSize(new Dimension(35, 35)); // Adjust button size (larger size)
+            closeButton.setBackground(Color.WHITE); // Red background color
+            closeButton.setForeground(Color.BLACK); // White text color
+            closeButton.setBorder(BorderFactory.createEmptyBorder()); // Remove the button border for better styling
+            closePanel.add(closeButton);
+
+            // Add close button to the right side of the card panel
+            cardPanel.add(closePanel, BorderLayout.NORTH); // Align to the top of the card
 
             // Add action listener to the close button
             closeButton.addActionListener(new ActionListener() {
@@ -90,15 +126,39 @@ public class CharacterWindow extends JFrame {
         JPanel cardPanel = new JPanel();
         cardPanel.setLayout(new BorderLayout());
 
-        // Add character details to the panel
-        JLabel characterLabel = new JLabel("Name: " + character.getName() + " | Level: " + character.getLevel());
-        cardPanel.add(characterLabel, BorderLayout.CENTER);
-
-        // Create a close button
+        // Create a small close button
+        JPanel closePanel = new JPanel();
+        closePanel.setLayout(new FlowLayout(FlowLayout.RIGHT)); // Right-align the button
         JButton closeButton = new JButton("X");
-        closeButton.setBackground(Color.RED);
-        closeButton.setForeground(Color.WHITE);
-        cardPanel.add(closeButton, BorderLayout.EAST);
+        closeButton.setFont(new Font("Arial", Font.BOLD, 20)); // Increase font size for better visibility
+        closeButton.setPreferredSize(new Dimension(35, 35)); // Adjust button size (larger size)
+
+        // Remove any default border and padding around the button
+        closeButton.setBackground(Color.WHITE); // Red background color
+        closeButton.setForeground(Color.BLACK); // White text color
+        closeButton.setBorder(BorderFactory.createEmptyBorder()); // Remove the button's default border
+        closeButton.setMargin(new Insets(0, 0, 0, 0)); // Remove any extra margin around the button
+
+        // Ensure the panel does not add extra space to the button
+        closePanel.setBorder(BorderFactory.createEmptyBorder()); // Remove any border from the panel itself
+
+        // Add the button to the close panel
+        closePanel.add(closeButton);
+
+        // Add the close panel to the card panel (top-right corner)
+        cardPanel.add(closePanel, BorderLayout.NORTH);
+
+        // Create a small close button
+        closePanel.setLayout(new FlowLayout(FlowLayout.RIGHT)); // Right-align the button
+        closeButton.setFont(new Font("Arial", Font.BOLD, 16)); // Font size increased
+        closeButton.setPreferredSize(new Dimension(35, 35)); // Adjust button size (larger size)
+        closeButton.setBackground(Color.WHITE);
+        closeButton.setForeground(Color.BLACK);
+        closeButton.setBorder(BorderFactory.createEmptyBorder()); // Remove the border for a cleaner look
+        closePanel.add(closeButton);
+
+        // Add close button to the top-right corner of the card
+        cardPanel.add(closePanel, BorderLayout.NORTH);
 
         // Add action listener to the close button
         closeButton.addActionListener(new ActionListener() {
